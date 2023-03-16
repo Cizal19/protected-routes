@@ -12,7 +12,7 @@ const Profile = () => {
       <Typography variant="h1">
         Welcome to the Profile Page
       </Typography>
-      <Link href="/home" variant="body2">Home</Link>
+      <Link href="/" variant="body2">Home</Link>
     </>
   )
 }

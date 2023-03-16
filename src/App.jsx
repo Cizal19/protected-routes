@@ -1,15 +1,17 @@
-import SignUp from "./pages/SignUp"
-import SignIn from "./pages/SignIn"
-import Home from "./pages/Home"
-import Profile from "./pages/Profile"
+import SignUp from "./Components/SignUp"
+import SignIn from "./Components/SignIn"
+import Home from "./Components/Home"
+import Profile from "./Components/Profile"
 import { Routes, Route } from "react-router-dom"
+
+
 
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<SignUp />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/signin' element={<SignIn />} />
-      <Route path='/home' element={<Home />} />
+      <Route path='/' element={<Home />} exact/>
       <Route path='/profile' element={<Profile />} />
     </Routes>
   )

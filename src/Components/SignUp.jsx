@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from "react";
 import { Formik, useFormik } from "formik";
 import { SignUpFormSchema } from "../schemas/SignUpFormSchema";
-// import { useNavigate } from "react-router-dom";
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,12 +26,6 @@ const SignUp = () => {
     document.title = 'Sign Up';
   }, [])
 
-
-  // let navigate = useNavigate();
-  // const routeChange = () => {
-  //   let path = `/SignIn`;
-  //   navigate(path);
-  // }
 
   const successNotify = () => {
     toast.success('You have signed up successfully', {
@@ -58,9 +52,6 @@ const SignUp = () => {
     onSubmit: async (values, actions) => {
       localStorage.setItem("savedInfo", JSON.stringify(values))
       successNotify()
-      // await new Promise((resolve) => setTimeout(resolve, 2000))
-      // actions.resetForm()
-      // routeChange()
     }
   })
 
@@ -101,7 +92,6 @@ const SignUp = () => {
                     (errors.email && touched.email) && errors.email
                   }
                 />
-                {/* {(errors.email && touched.email) && <Typography color="red">{errors.email}</Typography>} */}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -147,7 +137,7 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/SignIn" variant="body2">
+                <Link href="/signin" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

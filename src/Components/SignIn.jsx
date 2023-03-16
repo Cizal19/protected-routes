@@ -59,7 +59,6 @@ const SignIn = () => {
     });
   }
 
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
@@ -71,7 +70,6 @@ const SignIn = () => {
       if ((values.email === savedInfo.email) && (values.password === savedInfo.password)) {
         successNotify()
         await new Promise((resolve) => setTimeout(resolve, 3000))
-        
       } else {
         errorNotify()
         await new Promise((resolve) => setTimeout(resolve, 3000))
