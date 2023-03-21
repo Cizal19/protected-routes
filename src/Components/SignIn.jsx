@@ -17,6 +17,8 @@ import { SignInFormSchema } from "../schemas/SignInFormSchema";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -32,6 +34,12 @@ const SignIn = () => {
     document.title = 'Sign In';
   }, [])
 
+  let navigate = useNavigate();
+
+  const routeChange = () => {
+    let path = `/`;
+    navigate(path);
+  }
 
   const errorNotify = () => {
     toast.error('Invalid Email or Password', {
@@ -63,13 +71,14 @@ const SignIn = () => {
     initialValues: {
       email: '',
       password: '',
-      confirmPassword: '',
     },
     validationSchema: SignInFormSchema,
     onSubmit: async (values, actions) => {
       if ((values.email === savedInfo.email) && (values.password === savedInfo.password)) {
         successNotify()
         await new Promise((resolve) => setTimeout(resolve, 3000))
+        routeChange()
+        localStorage.setItem('token', JSON.stringify(true))
       } else {
         errorNotify()
         await new Promise((resolve) => setTimeout(resolve, 3000))
@@ -146,7 +155,7 @@ const SignIn = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

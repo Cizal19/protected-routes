@@ -3,16 +3,18 @@ import SignIn from "./Components/SignIn"
 import Home from "./Components/Home"
 import Profile from "./Components/Profile"
 import { Routes, Route } from "react-router-dom"
-
+import ProtectedRoutes from "./utils/ProtectedRoutes"
 
 
 const App = () => {
   return (
     <Routes>
+      <Route element={<ProtectedRoutes />}>
+        <Route path='/' element={<Home />} exact/>
+        <Route path='/profile' element={<Profile />} />
+      </Route>
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signin' element={<SignIn />} />
-      <Route path='/' element={<Home />} exact/>
-      <Route path='/profile' element={<Profile />} />
     </Routes>
   )
 }

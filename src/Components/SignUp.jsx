@@ -13,10 +13,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from "react";
 import { Formik, useFormik } from "formik";
 import { SignUpFormSchema } from "../schemas/SignUpFormSchema";
-
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 
 const theme = createTheme();
@@ -26,6 +25,12 @@ const SignUp = () => {
     document.title = 'Sign Up';
   }, [])
 
+  let navigate = useNavigate();
+
+  const routeChange = () => {
+    let path = `/signin`;
+    navigate(path);
+  }
 
   const successNotify = () => {
     toast.success('You have signed up successfully', {
@@ -52,6 +57,8 @@ const SignUp = () => {
     onSubmit: async (values, actions) => {
       localStorage.setItem("savedInfo", JSON.stringify(values))
       successNotify()
+      await new Promise((resolve) => setTimeout(resolve, 3000))
+      routeChange()
     }
   })
 
@@ -122,7 +129,7 @@ const SignUp = () => {
                   onBlur={handleBlur}
                   error={touched.confirmPassword && !values.confirmPassword}
                   helperText={
-                    (errors.confirmPassword && touched.confirmPassword) && errors.confirmPassword.slice(54, 75)
+                    (errors.confirmPassword && touched.confirmPassword) && errors.confirmPassword.slice(70, 90)
                   }
                 />
               </Grid>
