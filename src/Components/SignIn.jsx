@@ -37,7 +37,7 @@ const SignIn = () => {
   let navigate = useNavigate();
 
   const routeChange = () => {
-    let path = `/`;
+    let path = `/home`;
     navigate(path);
   }
 
@@ -76,9 +76,9 @@ const SignIn = () => {
     onSubmit: async (values, actions) => {
       if ((values.email === savedInfo.email) && (values.password === savedInfo.password)) {
         successNotify()
+        localStorage.setItem('token', JSON.stringify(true))
         await new Promise((resolve) => setTimeout(resolve, 3000))
         routeChange()
-        localStorage.setItem('token', JSON.stringify(true))
       } else {
         errorNotify()
         await new Promise((resolve) => setTimeout(resolve, 3000))
